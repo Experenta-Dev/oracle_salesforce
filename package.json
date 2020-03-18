@@ -1,0 +1,11 @@
+{
+  "name": "oracle_salesforce",
+  "version": "1.0.0",
+  "description": "Backend: Integración entre Oracle NetSuite y Salesforce ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "experenta.dev",
+  "license": "ISC"
+}
