@@ -39,7 +39,7 @@ app.post('/clients', (req, res) => {
 });
 
 app.delete('/clients/:sfid', function(req, res) {
-  client.query('DELETE FROM salesforce.Contact WHERE sfid = $1', [req.params.sfid], function(error, data) {
+  client.query('DELETE FROM salesforce.contact WHERE sfid = $1', [req.params.sfid], function(error, data) {
     res.json(data);
   });
 });
