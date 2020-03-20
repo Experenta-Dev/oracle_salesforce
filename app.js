@@ -21,19 +21,19 @@ client.connect( () =>{
 
 // Clientes
 app.get('/clients', (req, res)=>{
-  client.query('SELECT * FROM salesforce.Contact', (err, data)=>{
+  client.query('SELECT * FROM salesforce.contact', (err, data)=>{
     res.json(data.rows);
   });
 });
 
 app.get('/clients/:id', (req, res)=>{
-  client.query('SELECT * FROM salesforce.Contact WHERE id = $1', [req.params.id], (err, data)=>{
+  client.query('SELECT * FROM salesforce.contact WHERE id = $1', [req.params.id], (err, data)=>{
     res.json(data.rows[0]);
   });
 });
 
 app.post('/clients', (req, res) => {
-  client.query('INSERT INTO salesforce.Contact(numeroidentificacion__c) VALUES ($1)', [req.body.numeroidentificacion__c], (err, data) => {
+  client.query('INSERT INTO salesforce.contact(numeroidentificacion__c) VALUES ($1)', [req.body.numeroidentificacion__c], (err, data) => {
     res.json(data);
   });
 });
@@ -45,6 +45,29 @@ app.delete('/clients/:sfid', function(req, res) {
 });
 
 // Facturas
+app.get('/factura', (req, res)=>{
+  client.query('SELECT * FROM salesforce.factura__c', (err, data)=>{
+    res.json(data.rows);
+  });
+});
+
+/* app.get('/factura/:id', (req, res)=>{
+  client.query('SELECT * FROM salesforce.factura__c WHERE id = $1', [req.params.id], (err, data)=>{
+    res.json(data.rows[0]);
+  });
+}); */
+
+app.post('/factura', (req, res) => {
+  client.query('INSERT INTO salesforce.factura__c(Custom_Form__c) VALUES ($1)', [req.body.Custom_Form__c], (err, data) => {
+    res.json(data);
+  });
+});
+
+app.delete('/factura/:sfid', function(req, res) {
+  client.query('DELETE FROM salesforce.factura__c WHERE sfid = $1', [req.params.sfid], function(error, data) {
+    res.json(data);
+  });
+});
 
 
 // inicializar
