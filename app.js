@@ -33,7 +33,8 @@ app.get('/clients/:id', (req, res)=>{
 });
 
 app.post('/clients', (req, res) => {
-  client.query('INSERT INTO salesforce.contact(numeroidentificacion__c) VALUES ($1)', [req.body.numeroidentificacion__c], (err, data) => {
+  // son 49 campos
+  client.query('INSERT INTO salesforce.contact VALUES ($1)', [req.body.numeroidentificacion__c], (err, data) => {
     res.json(data);
   });
 });
@@ -51,14 +52,9 @@ app.get('/factura', (req, res)=>{
   });
 });
 
-/* app.get('/factura/:id', (req, res)=>{
-  client.query('SELECT * FROM salesforce.factura__c WHERE id = $1', [req.params.id], (err, data)=>{
-    res.json(data.rows[0]);
-  });
-}); */
-
 app.post('/factura', (req, res) => {
-  client.query('INSERT INTO salesforce.factura__c(Custom_Form__c) VALUES ($1)', [req.body.Custom_Form__c], (err, data) => {
+  // son 18 campos
+  client.query('INSERT INTO salesforce.factura__c VALUES ($1)', [req.body.Custom_Form__c], (err, data) => {
     res.json(data);
   });
 });
@@ -66,6 +62,13 @@ app.post('/factura', (req, res) => {
 app.delete('/factura/:sfid', function(req, res) {
   client.query('DELETE FROM salesforce.factura__c WHERE sfid = $1', [req.params.sfid], function(error, data) {
     res.json(data);
+  });
+});
+
+// Products
+app.get('/productos', (req, res)=>{
+  client.query('SELECT * FROM salesforce.producto__c', (err, data)=>{
+    res.json(data.rows);
   });
 });
 
