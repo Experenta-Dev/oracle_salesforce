@@ -56,7 +56,7 @@ app.post('/clients', (req, response) => {
       "Subsidiaria__c, SystemModstamp, TipoIdentificacion__c, Tipo_Tarjeta__c, hed__Gender__c, Contact_Ext_Id__c, Categoria_Oracle__c, Pais_Cliente_Oracle__c)" +
 
     "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34," +
-      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52) RETURNING *", 
+      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51) RETURNING *", 
     
     [req.body.apellidos, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate, 
     req.body.currency, req.body.customform, req.body.departamento, req.body.direccion_empresa, req.body.addr1, req.body.distrito, 
