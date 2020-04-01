@@ -148,7 +148,7 @@ app.get('/productos', (req, res)=>{
 app.post('/productos', (req, response) => {
   let createdDate = new Date();
   client.query("INSERT INTO " + 
-    "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
+    "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento_Oracle__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
     "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)", 
