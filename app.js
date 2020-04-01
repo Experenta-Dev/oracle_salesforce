@@ -162,7 +162,7 @@ app.post('/productos', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.send('SUCESS INSERTING PRODUCT');
+        response.send(data.rows[0]);
       }
   });
 });
