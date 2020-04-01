@@ -69,7 +69,7 @@ app.post('/clients', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.json(data.rows[0]);
+        response.send('SUCESS INSERTING CLIENT');
       }
   });
 });
@@ -115,7 +115,7 @@ app.post('/factura', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.json(data.rows[0]);
+        response.send('SUCESS INSERTING BILL');
       }
   });
 });
