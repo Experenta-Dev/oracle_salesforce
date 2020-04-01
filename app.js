@@ -70,7 +70,7 @@ app.post('/clients', (req, response) => {
 
     (err, data) => {
       if (err) {
-        response.send(data);
+        response.status(400).send(err);
       } else {
         response.send(data.rows[0]);
       }
