@@ -161,7 +161,7 @@ app.post('/productos', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.send.json(data.rows[0]);
+        response.send(response.json(data.rows[0]));
       }
   });
 });
