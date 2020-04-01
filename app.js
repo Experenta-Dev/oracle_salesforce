@@ -45,24 +45,26 @@ app.get('/clients/:id', (req, res)=>{
 });
 
 app.post('/clients', (req, response) => {
+  let createdDate = new Date();
+
   client.query("INSERT INTO " +  
     "salesforce.contact(Apellidos__c, Birthdate, CargoEmpresa__c, Ciudad_Tutor__c, Ciudad_de_Trabajo__c, Codigo_Cliente__c, CreatedDate," +
       "Currency_Oracle__c, Custom_Form__c, Department, Direcci_n_Trabajo__c, Direccion_de_Casa__c, Distrito__c, Email, Empresa__c," +
       "Estado_Civil__c, Estado__c, Fax_Oracle__c, Fecha_Caducidad_Tarjeta__c, HomePhone, Id, Individual__c, IsDeleted, Is_Company__c," +
       "Is_Person__c, LastName, MobilePhone, Name, Nombre_Empresa__c, Nombre_Legal__c, Nombre_Madre__c, Nombre_Padre__c, Nombre_Titular_Tarjeta__c, Nombres__c," +
       "NumeroIdentificacion__c, Numero_Tarjeta__c, Ocupacion__c, OtherPhone, Otra_Direccion__c, Pais_de_Trabajo__c, Pais_de_residencia__c, Parent_Company__c, Phone," + 
-      "Subsidiaria__c, SystemModstamp, TipoIdentificacion__c, Tipo_Tarjeta__c, hed__Gender__c, Contact_Ext_Id__c)" +
+      "Subsidiaria__c, SystemModstamp, TipoIdentificacion__c, Tipo_Tarjeta__c, hed__Gender__c, Contact_Ext_Id__c, Categoria_Oracle__c, Pais_Cliente_Oracle__c)" +
 
     "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34," +
-      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49)", 
+      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52)", 
     
-    [req.body.Apellidos__c, req.body.Birthdate, req.body.CargoEmpresa__c, req.body.Ciudad_Tutor__c, req.body.Ciudad_de_Trabajo__c, req.body.Codigo_Cliente__c, req.body.CreatedDate,
-    req.body.Currency_Oracle__c, req.body.Custom_Form__c, req.body.Department, req.body.Direcci_n_Trabajo__c, req.body.Direccion_de_Casa__c, req.body.Distrito__c, req.body.Email, req.body.Empresa__c,
-    req.body.Estado_Civil__c, req.body.Estado__c, req.body.Fax_Oracle__c, req.body.Fecha_Caducidad_Tarjeta__c, req.body.HomePhone, req.body.Id, req.body.Individual__c, req.body.IsDeleted,
-    req.body.Is_Company__c, req.body.Is_Person__c, req.body.LastName, req.body.MobilePhone, req.body.Name, req.body.Nombre_Empresa__c, req.body.Nombre_Legal__c, req.body.Nombre_Madre__c,
-    req.body.Nombre_Padre__c, req.body.Nombre_Titular_Tarjeta__c, req.body.Nombres__c, req.body.NumeroIdentificacion__c, req.body.Numero_Tarjeta__c, req.body.Ocupacion__c,
-    req.body.OtherPhone, req.body.Otra_Direccion__c, req.body.Pais_de_Trabajo__c, req.body.Pais_de_residencia__c, req.body.Parent_Company__c, req.body.Phone, req.body.Subsidiaria__c,
-    req.body.SystemModstamp, req.body.TipoIdentificacion__c, req.body.Tipo_Tarjeta__c, req.body.hed__Gender__c, req.body.Contact_Ext_Id__c], 
+    [req.body.apellidos, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate,
+    req.body.currency, req.body.customform, req.body.departamento, req.body.direccion_empresa, req.body.addr1, req.body.distrito, req.body.email, req.body.empresa_trabaja,
+    req.body.estado_civil, req.body.entitystatus, req.body.fax, req.body.fecha_caducidad_tarjeta, req.body.homephone, req.body.internal_id_saleforce, req.body.individual, req.body.IsDeleted,
+    req.body.is_company, req.body.is_person, req.body.apellidos, req.body.mobilephone, req.body.Name, req.body.companyname, req.body.legal_name, req.body.nombre_madre,
+    req.body.nombre_padre, req.body.nombre_titular_tarjeta, req.body.nombres, req.body.numero_identificacion, req.body.numero_tarjeta_credito, req.body.ocupacion,
+    req.body.altphone, req.body.addr2, req.body.pais_de_empresa, req.body.country, req.body.parent, req.body.phone, req.body.subsidiary,
+    createdDate, req.body.tipo_identifiacion, req.body.tipo_tarjeta, req.body.genero, req.body.Contact_Ext_Id__c, req.body.category, req.body.pais_cliente], 
 
     (err, data) => {
       if (err) {
@@ -100,15 +102,17 @@ app.get('/factura', (req, res)=>{
 });
 
 app.post('/factura', (req, response) => {
+  let createdDate = new Date();
+
   client.query("INSERT INTO " + 
     "salesforce.factura__c(Cajero__c, Clase__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
     "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)", 
     
-    [req.body.Cajero__c, req.body.Clase__c, req.body.Codigo_registro_exonerado__c, req.body.CreatedDate, req.body.CurrencyOracle__c, req.body.Custom_Form__c, req.body.Departamento__c,
-    req.body.Emisi_n_Factura__c, req.body.Estado_Aprobaci_n__c, req.body.Id, req.body.IsDeleted, req.body.Location__c, req.body.Name, req.body.Orden_Exenta__c, req.body.Raz_n_Social__c,
-    req.body.Registro_SAG__c, req.body.Subsidiaria__c, req.body.SystemModstamp, req.body.Factura_Ext_Id__c], 
+    [req.body.cajero, req.body.class, req.body.no_const_regis_exonerado, createdDate, req.body.currency, req.body.customform, req.body.department,
+    req.body.trandate, req.body.approvalstatus, req.body.id_salesforce, req.body.IsDeleted, req.body.location, req.body.Name, req.body.no_oc_exenta, req.body.entity,
+    req.body.no_registro_sag, req.body.subsidiary, createdDate, req.body.Factura_Ext_Id__c], 
     
     (err, data) => {
       if (err) {
@@ -147,14 +151,15 @@ app.get('/productos', (req, res)=>{
 
 app.post('/productos', (req, response) => {
   let createdDate = new Date();
+
   client.query("INSERT INTO " + 
     "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento_Oracle__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
     "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)", 
     
-    [req.body.Cantidad__c, req.body.Categoria__c, req.body.CodigoProducto__c, req.body.Codigo_Impuesto__c, createdDate, req.body.Descuento__c, req.body.Familia__c, req.body.Id,
-    req.body.IsDeleted, req.body.Name, req.body.Precio__c, req.body.Segmento_de_Negocio__c, req.body.Sub_Categoria__c, createdDate, req.body.Valor_Unitario__c,
+    [req.body.quantity, req.body.categ_item, req.body.id, req.body.taxcode, createdDate, req.body.id_descuento, req.body.familia_ite, req.body.id_salesforce,
+    req.body.IsDeleted, req.body.Name, req.body.price, req.body.segm_neg, req.body.sub_cat, createdDate, req.body.rate,
     req.body.Product_Ext_Id__c], 
     
     (err, data) => {
@@ -162,7 +167,7 @@ app.post('/productos', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.send(data.rows[0]);
+        response.send('SUCESS INSERTING PRODUCT');
       }
   });
 });

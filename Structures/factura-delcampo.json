@@ -1,19 +1,24 @@
 {
   "factura": {
-    "customform": "Custom_Form__c",
-    "entity": "Raz_n_Social__c",
-    "approvalstatus": "Estado_Aprobaci_n__c",
-    "trandate": "Emisi_n_Factura__c",
-    "no_oc_exenta": "Orden_Exenta__c",
-    "no_const_regis_exonerado": "Codigo_registro_exonerado__c",
-    "no_registro_sag": "Registro_SAG__c",
-    "cajero": "Cajero__c",
+    "customform": "",
+    "entity": "",
+    "approvalstatus": "",
+    "trandate": "",
+    "no_oc_exenta": "",
+    "no_const_regis_exonerado": "",
+    "no_registro_sag": "",
+    "cajero": "",
     "internal_id_saleforce": "",
-    "subsidiary": "Subsidiaria__c",
-    "department": "Departamento__c",
-    "class": "Clase__c",
-    "location": "Location__c",
-    "currency": "CurrencyOracle__c",
+    "subsidiary": "",
+    "department": "",
+    "class": "",
+    "location": "",
+    "currency": "",
+
+    "id_salesforce": "",
+    "IsDeleted": "",
+    "Name": "",
+
     "detalle": [
       {
         "id": "",
@@ -26,11 +31,12 @@
         "sub_cat": "",
         "familia_ite": "",
         "segm_neg": "",
+        
 
-        "id_salesforce": "REVISAR",
-        "IsDeleted": "REVISAR",
-        "Name": "REVISAR",
-        "Product_Ext_Id__c": "REVISAR"
+        "id_salesforce": "",
+        "IsDeleted": "",
+        "Name": "",
+        "Product_Ext_Id__c": "",
       }
     ]
   }
