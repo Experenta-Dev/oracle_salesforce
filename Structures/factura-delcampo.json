@@ -1,0 +1,37 @@
+{
+  "factura": {
+    "customform": "Custom_Form__c",
+    "entity": "Raz_n_Social__c",
+    "approvalstatus": "Estado_Aprobaci_n__c",
+    "trandate": "Emisi_n_Factura__c",
+    "no_oc_exenta": "Orden_Exenta__c",
+    "no_const_regis_exonerado": "Codigo_registro_exonerado__c",
+    "no_registro_sag": "Registro_SAG__c",
+    "cajero": "Cajero__c",
+    "internal_id_saleforce": "",
+    "subsidiary": "Subsidiaria__c",
+    "department": "Departamento__c",
+    "class": "Clase__c",
+    "location": "Location__c",
+    "currency": "CurrencyOracle__c",
+    "detalle": [
+      {
+        "id": "",
+        "id_descuento": "",
+        "quantity": "",
+        "price": "",
+        "rate": "",
+        "taxcode": "",
+        "categ_item": "",
+        "sub_cat": "",
+        "familia_ite": "",
+        "segm_neg": "",
+
+        "id_salesforce": "REVISAR",
+        "IsDeleted": "REVISAR",
+        "Name": "REVISAR",
+        "Product_Ext_Id__c": "REVISAR"
+      }
+    ]
+  }
+}
