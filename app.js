@@ -102,7 +102,7 @@ app.get('/factura', (req, res)=>{
 app.post('/factura', (req, response) => {
   client.query("INSERT INTO " + 
     "salesforce.factura__c(Cajero__c, Clase__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
-    "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Record_Id__c, Factura_Ext_Id__c)" +
+    "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)", 
     
