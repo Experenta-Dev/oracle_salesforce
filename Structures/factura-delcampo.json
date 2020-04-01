@@ -18,6 +18,7 @@
     "id_salesforce": "",
     "IsDeleted": "",
     "Name": "",
+    "Factura_Ext_Id__c": "",
 
     "detalle": [
       {
