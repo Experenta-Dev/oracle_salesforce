@@ -150,7 +150,7 @@ app.post('/productos', (req, response) => {
     "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
     "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)", 
     
     [req.body.Cantidad__c, req.body.Categoria__c, req.body.CodigoProducto__c, req.body.Codigo_Impuesto__c, req.body.CreatedDate, req.body.Descuento__c, req.body.Familia__c, req.body.Id,
     req.body.IsDeleted, req.body.Name, req.body.Precio__c, req.body.Segmento_de_Negocio__c, req.body.Sub_Categoria__c, req.body.SystemModstamp, req.body.Valor_Unitario__c,
