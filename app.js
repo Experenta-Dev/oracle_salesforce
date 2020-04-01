@@ -146,7 +146,7 @@ app.get('/productos', (req, res)=>{
 });
 
 app.post('/productos', (req, response) => {
-  client.query("INSERT INTO" + 
+  client.query("INSERT INTO " + 
     "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
     "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
     
@@ -161,7 +161,7 @@ app.post('/productos', (req, response) => {
         console.log(err);
         response.status(400).send(err);
       } else {
-        response.json(data.rows[0]);
+        response.send.json(data.rows[0]);
       }
   });
 });
