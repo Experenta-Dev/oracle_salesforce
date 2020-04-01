@@ -56,22 +56,23 @@ app.post('/clients', (req, response) => {
       "Subsidiaria__c, SystemModstamp, TipoIdentificacion__c, Tipo_Tarjeta__c, hed__Gender__c, Contact_Ext_Id__c, Categoria_Oracle__c, Pais_Cliente_Oracle__c)" +
 
     "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34," +
-      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52)", 
+      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52) RETURNING *", 
     
-    [req.body.apellidos, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate,
-    req.body.currency, req.body.customform, req.body.departamento, req.body.direccion_empresa, req.body.addr1, req.body.distrito, req.body.email, req.body.empresa_trabaja,
-    req.body.estado_civil, req.body.entitystatus, req.body.fax, req.body.fecha_caducidad_tarjeta, req.body.homephone, req.body.internal_id_saleforce, req.body.individual, req.body.IsDeleted,
-    req.body.is_company, req.body.is_person, req.body.apellidos, req.body.mobilephone, req.body.Name, req.body.companyname, req.body.legal_name, req.body.nombre_madre,
-    req.body.nombre_padre, req.body.nombre_titular_tarjeta, req.body.nombres, req.body.numero_identificacion, req.body.numero_tarjeta_credito, req.body.ocupacion,
+    [req.body.apellidos, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate, 
+    req.body.currency, req.body.customform, req.body.departamento, req.body.direccion_empresa, req.body.addr1, req.body.distrito, 
+    req.body.email, req.body.empresa_trabaja, req.body.estado_civil, req.body.entitystatus, req.body.fax, 
+    req.body.fecha_caducidad_tarjeta, req.body.homephone, req.body.internal_id_saleforce, req.body.individual, req.body.IsDeleted,
+    req.body.is_company, req.body.is_person, req.body.apellidos, req.body.mobilephone, req.body.Name, req.body.companyname, 
+    req.body.legal_name, req.body.nombre_madre, req.body.nombre_padre, req.body.nombre_titular_tarjeta, 
+    req.body.nombres, req.body.numero_identificacion, req.body.numero_tarjeta_credito, req.body.ocupacion,
     req.body.altphone, req.body.addr2, req.body.pais_de_empresa, req.body.country, req.body.parent, req.body.phone, req.body.subsidiary,
     createdDate, req.body.tipo_identifiacion, req.body.tipo_tarjeta, req.body.genero, req.body.Contact_Ext_Id__c, req.body.category, req.body.pais_cliente], 
 
     (err, data) => {
       if (err) {
-        console.log(err);
         response.status(400).send(err);
       } else {
-        response.send('SUCESS INSERTING CLIENT');
+        response.send(data.rows[0]);
       }
   });
 });
@@ -79,7 +80,6 @@ app.post('/clients', (req, response) => {
 app.delete('/clients/:sfid', function(req, res) {
   client.query('DELETE FROM salesforce.contact WHERE sfid = $1', [req.params.sfid], function(error, data) {
     if (err) {
-      console.log(err);
       res.status(400).send(err);
     } else {
       res.json(data);
@@ -93,7 +93,6 @@ app.delete('/clients/:sfid', function(req, res) {
 app.get('/factura', (req, res)=>{
   client.query('SELECT * FROM salesforce.factura__c', (err, data)=>{
     if (err) {
-      console.log(err);
       res.status(400).send(err);
     } else {
       res.json(data.rows);
@@ -108,7 +107,7 @@ app.post('/factura', (req, response) => {
     "salesforce.factura__c(Cajero__c, Clase__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
     "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING *", 
     
     [req.body.cajero, req.body.class, req.body.no_const_regis_exonerado, createdDate, req.body.currency, req.body.customform, req.body.department,
     req.body.trandate, req.body.approvalstatus, req.body.id_salesforce, req.body.IsDeleted, req.body.location, req.body.Name, req.body.no_oc_exenta, req.body.entity,
@@ -116,10 +115,9 @@ app.post('/factura', (req, response) => {
     
     (err, data) => {
       if (err) {
-        console.log(err);
         response.status(400).send(err);
       } else {
-        response.send('SUCESS INSERTING BILL');
+        response.send(data.rows[0]);
       }
   });
 });
@@ -141,7 +139,6 @@ app.delete('/factura/:sfid', function(req, res) {
 app.get('/productos', (req, res)=>{
   client.query('SELECT * FROM salesforce.producto__c', (err, data)=>{
     if (err) {
-      console.log(err);
       res.status(400).send(err);
     } else {
       res.json(data.rows);
@@ -156,7 +153,7 @@ app.post('/productos', (req, response) => {
     "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento_Oracle__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
     "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *", 
     
     [req.body.quantity, req.body.categ_item, req.body.id, req.body.taxcode, createdDate, req.body.id_descuento, req.body.familia_ite, req.body.id_salesforce,
     req.body.IsDeleted, req.body.Name, req.body.price, req.body.segm_neg, req.body.sub_cat, createdDate, req.body.rate,
@@ -164,10 +161,9 @@ app.post('/productos', (req, response) => {
     
     (err, data) => {
       if (err) {
-        console.log(err);
         response.status(400).send(err);
       } else {
-        response.send('SUCESS INSERTING PRODUCT');
+        response.send(data.rows[0]);
       }
   });
 });
