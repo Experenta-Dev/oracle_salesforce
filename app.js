@@ -163,6 +163,7 @@ app.post('/productos', (req, response) => {
     
     (err, data) => {
       if (err) {
+        console.log(err);
         response.status(400).send(err);
       } else {
         response.send(data.rows[0]);
