@@ -193,23 +193,3 @@ app.listen(PORT, () => {
    * Cseg_Familia_Ite
    * Cseg_Segm_Neg
    */
-
-  "Internal_ID_Oracle__c": "",
-  "Item_Name_Number__c": "",
-  "UPC_Code__c": "",
-  "Descripcion__c": "",
-  "Name": "",
-  "Unit_Type__c": "",
-  "Subsidiary__c": "",
-  "Department__c": "",
-  "Class__c": "",
-  "Location__c": "",
-  "Cseg_Segm_Neg__c": "",
-  "Cseg_Categ_Item__c": "",
-  "Cseg_Sub_Cat__c": "",
-  "Cseg_Familia_Item__c": "",
-  "Descuento_Oracle__c": "",
-  "Cantidad__c": "",
-  "Precio__c": "",
-  "Rate__c": "",
-  "Tax_Code__c": ""
