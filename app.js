@@ -6,8 +6,8 @@ const app = express();
 
 var PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Configurar conexión, middlewares y rutas
@@ -151,14 +151,14 @@ app.post('/productos', (req, response) => {
   let createdDate = new Date();
 
   client.query("INSERT INTO " + 
-    "salesforce.producto__c(Cantidad__c, Categoria__c, CodigoProducto__c, Codigo_Impuesto__c, CreatedDate, Descuento_Oracle__c, Familia__c, Id, IsDeleted, Name, Precio__c," + 
-    "Segmento_de_Negocio__c, Sub_Categoria__c, SystemModstamp, Valor_Unitario__c, Product_Ext_Id__c)" +
+    "salesforce.producto__c(Cantidad__c, Class__c, CreatedDate, Cseg_Categ_Item__c, Cseg_Familia_Item__c, Cseg_Segm_Neg__c, Cseg_Sub_Cat__c, Department__c, Descripcion__c, Unit_Type__c," + 
+      "Descuento_Oracle__c, Id, Internal_ID_Oracle__c, IsDeleted, Item_Name_Number__c, Location__c, Name, Precio__c, Rate__c, Subsidiary__c, SystemModstamp, Tax_Code__c, UPC_Code__c)" +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING *", 
+    "VALUES ($1, $2, $3, $3, $4, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23) RETURNING *", 
     
-    [req.body.quantity, req.body.categ_item, req.body.id, req.body.taxcode, createdDate, req.body.id_descuento, req.body.familia_ite, req.body.id_salesforce,
-    req.body.IsDeleted, req.body.Name, req.body.price, req.body.segm_neg, req.body.sub_cat, createdDate, req.body.rate,
-    req.body.Product_Ext_Id__c], 
+    [req.body.Cantidad__c, req.body.Class__c, createdDate, req.body.Cseg_Categ_Item__c, req.body.Cseg_Familia_Item__c, req.body.Cseg_Segm_Neg__c, req.body.Cseg_Sub_Cat__c, req.body.Department__c, req.body.Descripcion__c, 
+      req.body.Unit_Type__c, req.body.Descuento_Oracle__c, req.body.Name, req.body.Internal_ID_Oracle__c, false, req.body.Item_Name_Number__c, req.body.Location__c, req.body.Name, req.body.Precio__c, req.body.Rate__c, 
+      req.body.Subsidiary__c, createdDate, req.body.Tax_Code__c, req.body.UPC_Code__c], 
     
     (err, data) => {
       if (err) {
@@ -174,3 +174,42 @@ app.post('/productos', (req, response) => {
 app.listen(PORT, () => {
     console.log("Listening on PORT:", PORT);
   });
+
+  /*
+   * Subsidiary
+   * Department
+   * Class
+   * Location
+   * Custom Form
+   * Category
+   * Genero
+   * Estado Civil
+   * Tipo de Tarjeta
+   * Tax Code
+   * Currency
+   * Cajero
+   * Cseg_Sub_Cat
+   * Cseg_Categ_Item
+   * Cseg_Familia_Ite
+   * Cseg_Segm_Neg
+   */
+
+  "Internal_ID_Oracle__c": "",
+  "Item_Name_Number__c": "",
+  "UPC_Code__c": "",
+  "Descripcion__c": "",
+  "Name": "",
+  "Unit_Type__c": "",
+  "Subsidiary__c": "",
+  "Department__c": "",
+  "Class__c": "",
+  "Location__c": "",
+  "Cseg_Segm_Neg__c": "",
+  "Cseg_Categ_Item__c": "",
+  "Cseg_Sub_Cat__c": "",
+  "Cseg_Familia_Item__c": "",
+  "Descuento_Oracle__c": "",
+  "Cantidad__c": "",
+  "Precio__c": "",
+  "Rate__c": "",
+  "Tax_Code__c": ""
