@@ -48,7 +48,7 @@ app.post('/clients', (req, response) => {
   let createdDate = new Date();
 
   client.query("INSERT INTO " +  
-    "salesforce.contact(Apellidos__c, Birthdate, CargoEmpresa__c, Ciudad_Tutor__c, Ciudad_de_Trabajo__c, Codigo_Cliente__c, CreatedDate," +
+    "salesforce.contact(Apellidos__c, LastName, Birthdate, CargoEmpresa__c, Ciudad_Tutor__c, Ciudad_de_Trabajo__c, Codigo_Cliente__c, CreatedDate," +
       "Currency_Oracle__c, Custom_Form__c, Department__c, Direcci_n_Trabajo__c, Direccion_de_Casa__c, Distrito__c, Email, Empresa__c," +
       "Estado_Civil__c, Estado__c, Fax_Oracle__c, Fecha_Caducidad_Tarjeta__c, HomePhone, Id, Individual__c, IsDeleted, Is_Company__c," +
       "Is_Person__c, LastName, MobilePhone, Name, Nombre_Empresa__c, Nombre_Legal__c, Nombre_Madre__c, Nombre_Padre__c, Nombre_Titular_Tarjeta__c, Nombres__c," +
@@ -56,9 +56,9 @@ app.post('/clients', (req, response) => {
       "Subsidiaria__c, SystemModstamp, TipoIdentificacion__c, Tipo_Tarjeta__c, hed__Gender__c, Contact_Ext_Id__c, Categoria_Oracle__c, Pais_Cliente_Oracle__c)" +
 
     "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34," +
-      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51) RETURNING *", 
+      "$35, $36, $37, $38, $39, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $50, $51, $52) RETURNING *", 
     
-    [req.body.apellidos, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate, 
+    [req.body.apellidos, req.body.LastName, req.body.fecha_nacimiento, req.body.ocupacion, req.body.ciudad, req.body.ciudad_empresa, req.body.codigo_cliente, createdDate, 
     req.body.currency, req.body.customform, req.body.departamento, req.body.direccion_empresa, req.body.addr1, req.body.distrito, 
     req.body.email, req.body.empresa_trabaja, req.body.estado_civil, req.body.entitystatus, req.body.fax, 
     req.body.fecha_caducidad_tarjeta, req.body.homephone, req.body.internal_id_saleforce, req.body.individual, req.body.IsDeleted,
