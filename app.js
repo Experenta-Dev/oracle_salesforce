@@ -105,12 +105,12 @@ app.post('/factura', (req, response) => {
   let createdDate = new Date();
 
   client.query("INSERT INTO " + 
-    "salesforce.factura__c(Cajero__c, Clase__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
+    "salesforce.factura__c(Cajero__c, Class_Text__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
     "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING *", 
     
-    [req.body.cajero, req.body.class, req.body.no_const_regis_exonerado, createdDate, req.body.currency, req.body.customform, req.body.department,
+    [req.body.cajero, req.body.Class_Text__c, req.body.no_const_regis_exonerado, createdDate, req.body.currency, req.body.customform, req.body.department,
     req.body.trandate, req.body.approvalstatus, req.body.id_salesforce, req.body.IsDeleted, req.body.location, req.body.Name, req.body.no_oc_exenta, req.body.entity,
     req.body.no_registro_sag, req.body.subsidiary, createdDate, req.body.Factura_Ext_Id__c], 
     
