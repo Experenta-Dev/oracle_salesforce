@@ -183,14 +183,40 @@ app.get('/debito', (req, res)=>{
   });
 });
 
+app.post('/debito', (req, res) => {
+  let createdDate = new Date();
+  client.query('query', [req.body.dato], (err, data) => {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else {
+      res.json(data.rows[0]);
+    }
+  });
+});
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Credito
-app.get('/debito', (req, res)=>{
+app.get('/credito', (req, res)=>{
   client.query('SELECT * FROM salesforce.nota_de_credito__c', (err, data)=>{
     if (err) {
       res.status(400).send(err);
     } else {
       res.json(data.rows);
+    }
+  });
+});
+
+app.post('/credito', (req, res) => {
+  let createdDate = new Date();
+  client.query('query', [req.body.dato], (err, data) => {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else {
+      res.json(data.rows[0]);
     }
   });
 });
