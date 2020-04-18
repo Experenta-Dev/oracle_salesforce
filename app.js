@@ -49,7 +49,7 @@ app.post('/clients', (req, response) => {
 
   client.query("INSERT INTO " +  
     "salesforce.contact(Apellidos__c, Birthdate, CargoEmpresa__c, Ciudad_Tutor__c, Ciudad_de_Trabajo__c, Codigo_Cliente__c, CreatedDate," +
-      "Currency_Oracle__c, Custom_Form__c, Department, Direcci_n_Trabajo__c, Direccion_de_Casa__c, Distrito__c, Email, Empresa__c," +
+      "Currency_Oracle__c, Custom_Form__c, Department__c, Direcci_n_Trabajo__c, Direccion_de_Casa__c, Distrito__c, Email, Empresa__c," +
       "Estado_Civil__c, Estado__c, Fax_Oracle__c, Fecha_Caducidad_Tarjeta__c, HomePhone, Id, Individual__c, IsDeleted, Is_Company__c," +
       "Is_Person__c, LastName, MobilePhone, Name, Nombre_Empresa__c, Nombre_Legal__c, Nombre_Madre__c, Nombre_Padre__c, Nombre_Titular_Tarjeta__c, Nombres__c," +
       "NumeroIdentificacion__c, Numero_Tarjeta__c, Ocupacion__c, OtherPhone, Otra_Direccion__c, Pais_de_Trabajo__c, Pais_de_residencia__c, Parent_Company__c, Phone," + 
@@ -223,8 +223,20 @@ app.get('/credito', (req, res)=>{
 });
 
 app.post('/credito', (req, res) => {
-  let createdDate = new Date();
-  client.query('query', [req.body.dato], (err, data) => {
+  client.query("INSERT INTO "+ 
+    "salesforce.nota_de_credito__c(Name, Credit__c, Custom_Form_Text__c, Customer_Project__c, Approbal_Status__c, Date__c, " +
+    "Cajero_Text__c, Memo__c, Internal_ID_Oracle__c, Subsidiary_Text__c, Department_Text__c, Class_Text__c, Location_Text__c, " +
+    "Currency_Oracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c, Tax_Code_Text__c, Apply__c, Payment__c, Cseg_Categ_Item_Text__c, " +
+    "Cseg_Sub_Cat_Text__c, Cseg_Familia_Ite_Text__c, Cseg_Segm_Neg_Text__c)" +
+    
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25) RETURNING*",
+    
+    [req.body.Name, req.body.Credit__c, req.body.Custom_Form_Text__c, req.body.Customer_Project__c, req.body.Approbal_Status__c, req.body.Date__c,
+      req.body.Cajero_Text__c, req.body.Memo__c, req.body.Internal_ID_Oracle__c, req.body.Subsidiary_Text__c, req.body.Department_Text__c, req.body.Class_Text__c, req.body.Location_Text__c,
+      req.body.Currency_Oracle__c, req.body.Item__c, req.body.Quantity__c, req.body.Price_Level__c, req.body.Rate__c, req.body.Tax_Code_Text__c, req.body.Apply__c, req.body.Payment__c, req.body.Cseg_Categ_Item_Text__c,
+      req.body.Cseg_Sub_Cat_Text__c, req.body.Cseg_Familia_Ite_Text__c, req.body.Cseg_Segm_Neg_Text__c],
+    
+    (err, data) => {
     if(err) {
       console.log(err);
       res.status(400).send(err);
