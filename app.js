@@ -105,14 +105,15 @@ app.post('/factura', (req, response) => {
   let createdDate = new Date();
 
   client.query("INSERT INTO " + 
-    "salesforce.factura__c(Cajero__c, Class_Text__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c," + 
-    "Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
+    "salesforce.factura__c(Cajero__c, Class_Text__c, Codigo_registro_exonerado__c, CreatedDate, CurrencyOracle__c, Custom_Form__c, " +
+    "Departamento__c, Emisi_n_Factura__c, Estado_Aprobaci_n__c, Id, IsDeleted, Location__c, Name, Orden_Exenta__c, Raz_n_Social__c, " +
+    "Registro_SAG__c, Subsidiaria__c, SystemModstamp, Factura_Ext_Id__c)" +
     
     "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING *", 
     
-    [req.body.cajero, req.body.Class_Text__c, req.body.no_const_regis_exonerado, createdDate, req.body.currency, req.body.customform, req.body.department,
-    req.body.trandate, req.body.approvalstatus, req.body.id_salesforce, req.body.IsDeleted, req.body.location, req.body.Name, req.body.no_oc_exenta, req.body.entity,
-    req.body.no_registro_sag, req.body.subsidiary, createdDate, req.body.Factura_Ext_Id__c], 
+    [req.body.Cajero__c, req.body.Class_Text__c, req.body.Codigo_registro_exonerado__c, CreatedDate, req.body.CurrencyOracle__c, req.body.Custom_Form__c,
+    req.body.Departamento__c, req.body.Emisi_n_Factura__c, req.body.Estado_Aprobaci_n__c, req.body.Id, req.body.IsDeleted, req.body.Location__c, req.body.Name, req.body.Orden_Exenta__c, req.body.Raz_n_Social__c,
+    req.body.Registro_SAG__c, req.body.Subsidiaria__c, createdDate, req.body.Factura_Ext_Id__c], 
     
     (err, data) => {
       if (err) {
