@@ -191,7 +191,7 @@ app.get('/debito', (req, res)=>{
 app.post('/debito', (req, res) => {
   let createdDate = new Date();
 
-  client.query("INSERT INTO" +
+  client.query("INSERT INTO " +
     "salesforce.nota_de_debito__c(Custom_Form_Text__c, Customer_Project__c, Approbal_Status__c, Date__c, Cajero_Texto__c, No_O_C_Exenta__c, " +
       "No_Const_Registro_Exonerados__c, Correlativo__c, CAI__c, Registro_SAG__c, Memo__c, Name, Internal_ID_Oracle__c, Subsidiary_Text__c, " +
       "Department_Text__c, Class_Text__c, Location_Text__c, Currency_Oracle__c, Item__c, Quantity__c, " +
