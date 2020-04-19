@@ -111,7 +111,7 @@ app.post('/factura', (req, response) => {
       "Class_Text__c, Location__c, CurrencyOracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c, " +
       "Tax_Code_Text__c, Categoria_Item__c, Sub_Categoria_Item__c, Familia_Item__c, Segmento_de_Negocio__c, CreatedDate, Id, IsDeleted, SystemModstamp) " +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24) RETURNING *", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28) RETURNING *", 
     
     [req.body.customform, req.body.entity, req.body.approvalstatus, req.body.trandate, req.body.custbody_no_oc_exenta,
       req.body.custbody_no_const_regis_exonerado, req.body.custbody_no_registro_sag, req.body.custbody_cajero, req.body.custbody_internal_id_saleforce, 
