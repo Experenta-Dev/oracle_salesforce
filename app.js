@@ -67,7 +67,7 @@ app.post('/clients', (req, response) => {
       req.body.fax, req.body.subsidiary, req.body.custentity_fecha_caducidad_tarjeta, req.body.custentity_nombre_titular_tarjeta,
       req.body.custentity_pais_cliente, req.body.custentity_tipo_tarjeta, req.body.custentity_numero_tarjeta_credito, req.body.currency,
       req.body.country, req.body.custrecord_departamento, req.body.custrecord_ciudad, req.body.custrecord_distrito, req.body.addr1,
-      req.body.addr2, req.body.internalid, req.body.CreatedDate, req.body.Id, req.body.IsDeleted, req.body.SystemModstamp, req.body.LastName], 
+      req.body.addr2, req.body.internalid, createdDate, req.body.Name, false, createdDate, req.body.LastName], 
 
     (err, data) => {
       if (err) {
