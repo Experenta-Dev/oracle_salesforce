@@ -106,17 +106,18 @@ app.post('/factura', (req, response) => {
   let createdDate = new Date();
 
   client.query("INSERT INTO " + 
-    "salesforce.factura__c(Cajero__c, Class_Text__c, Codigo_registro_exonerado__c, CurrencyOracle__c, Custom_Form__c, Tax_Code_Text__c, " +
-    "Departamento__c, Estado_Aprobaci_n__c, Location__c, Name, Orden_Exenta__c, Customer_Project__c, Date__c" +
-    "Registro_SAG__c, Subsidiaria__c, Internal_ID_Oracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c)" +
-    "Categoria_Item__c, Sub_Categoria_Item__c, Familia_Item__c, Segmento_de_Negocio__c" +
+    "salesforce.factura__c(Custom_Form__c, Customer_Project__c, Estado_Aprobaci_n__c, Date__c, Orden_Exenta__c, Codigo_registro_exonerado__c, " + 
+      "Registro_SAG__c, Cajero__c, Name, Internal_ID_Oracle__c, Subsidiaria__c, Departamento__c," +
+      "Class_Text__c, Location__c, CurrencyOracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c, " +
+      "Tax_Code_Text__c, Categoria_Item__c, Sub_Categoria_Item__c, Familia_Item__c, Segmento_de_Negocio__c, CreatedDate, Id, IsDeleted, SystemModstamp) " +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24,) RETURNING *", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24) RETURNING *", 
     
-    [req.body.Cajero__c, req.body.Class_Text__c, req.body.Codigo_registro_exonerado__c, , req.body.CurrencyOracle__c, req.body.Custom_Form__c, req-body.Tax_Code_Text__c,
-    req.body.Departamento__c, req.body.Estado_Aprobaci_n__c, req.body.Location__c, req.body.Name, req.body.Orden_Exenta__c, req.body.Customer_Project__c, req.body.Date__c,
-    req.body.Registro_SAG__c, req.body.Subsidiaria__c, req.body.Internal_ID_Oracle__c, req.body.Item__c, req.body.Quantity__c, req.body.Price_Level__c, req.body.Rate__C,
-    req.body-Categoria_Item__c, req.body.Sub_Categoria_Item__c, req.body.Familia_Item__c, req.body.Segmento_de_Negocio__c], 
+    [req.body.customform, req.body.entity, req.body.approvalstatus, req.body.trandate, req.body.custbody_no_oc_exenta,
+      req.body.custbody_no_const_regis_exonerado, req.body.custbody_no_registro_sag, req.body.custbody_cajero, req.body.custbody_internal_id_saleforce, 
+      req.body.Internalid, req.body.subsidiary, req.body.department, req.body.class, req.body.location, req.body.currency, req.body.item, req.body.quantity,
+      req.body.price, req.body.rate, req.body.taxcode, req.body.cseg_categ_item, req.body.cseg_sub_cat, req.body.cseg_familia_ite, req.body.cseg_segm_neg,
+      createdDate, req.body.custbody_internal_id_saleforce, false, createdDate], 
     
     (err, data) => {
       if (err) {
