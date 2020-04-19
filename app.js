@@ -198,7 +198,7 @@ app.post('/debito', (req, res) => {
       "Price_Level__c, Rate__c, Taxcode_Text__c, Cseg_Categ_Item_Text__c, Cseg_Sub_Cat_Text__c, Cseg_Familia_Ite_Text__c, Cseg_Segm_Neg_Text__c, CreatedDate, " +
       "Id, IsDeleted, SystemModstamp) " +
 
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27) RETURNING *", 
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31) RETURNING *", 
     
     [  req.body.customform, req.body.entity, req.body.approvalstatus, req.body.trandate, req.body.custbody_cajero, req.body.custbody_no_oc_exenta,
       req.body.custbody_no_const_regis_exonerado, req.body.custbody_correlativo, req.body.custbody_cai, req.body.custbody_no_registro_sag, req.body.memo,
