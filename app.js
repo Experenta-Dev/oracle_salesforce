@@ -189,6 +189,8 @@ app.get('/debito', (req, res)=>{
 });
 
 app.post('/debito', (req, res) => {
+  let createdDate = new Date();
+
   client.query("INSERT INTO" +
     "salesforce.nota_de_debito__c(Custom_Form_Text__c, Customer_Project__c, Approbal_Status__c, Date__c," +
     "Cajero_Text__c, No_O_C_Exenta__c, No_Const_Registro_Exonerados__c, Correlativo__c, CAI__c, Registro_SAG__c," +
@@ -228,18 +230,22 @@ app.get('/credito', (req, res)=>{
 });
 
 app.post('/credito', (req, res) => {
+  let createdDate = new Date();
+
   client.query("INSERT INTO "+ 
-    "salesforce.nota_de_credito__c(Name, Credit__c, Custom_Form_Text__c, Customer_Project__c, Approbal_Status__c, Date__c, " +
-    "Cajero_Text__c, Memo__c, Internal_ID_Oracle__c, Subsidiary_Text__c, Department_Text__c, Class_Text__c, Location_Text__c, " +
-    "Currency_Oracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c, Tax_Code_Text__c, Apply__c, Payment__c, Cseg_Categ_Item_Text__c, " +
-    "Cseg_Sub_Cat_Text__c, Cseg_Familia_Ite_Text__c, Cseg_Segm_Neg_Text__c)" +
+    "salesforce.Nota_de_Credito__c(Name, Credit__c, Custom_Form_Text__c, Customer_Project__c, Approbal_Status__c, Date__c, " +
+      "Cajero_Text__c, Memo__c, Internal_ID_Oracle__c, Subsidiary_Text__c, Department_Text__c, Class_Text__c, " +
+      "Location_Text__c, Currency_Oracle__c, Item__c, Quantity__c, Price_Level__c, Rate__c, Tax_Code_Text__c, " +
+      "Apply__c, Payment__c, Cseg_Categ_Item_Text__c, Cseg_Sub_Cat_Text__c, Cseg_Familia_Ite_Text__c, Cseg_Segm_Neg_Text__c, " +
+      "CreatedDate, Id, IsDeleted, SystemModstamp) " +
     
-    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25) RETURNING*",
+    "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29) RETURNING*",
     
-    [req.body.Name, req.body.Credit__c, req.body.Custom_Form_Text__c, req.body.Customer_Project__c, req.body.Approbal_Status__c, req.body.Date__c,
-      req.body.Cajero_Text__c, req.body.Memo__c, req.body.Internal_ID_Oracle__c, req.body.Subsidiary_Text__c, req.body.Department_Text__c, req.body.Class_Text__c, req.body.Location_Text__c,
-      req.body.Currency_Oracle__c, req.body.Item__c, req.body.Quantity__c, req.body.Price_Level__c, req.body.Rate__c, req.body.Tax_Code_Text__c, req.body.Apply__c, req.body.Payment__c, req.body.Cseg_Categ_Item_Text__c,
-      req.body.Cseg_Sub_Cat_Text__c, req.body.Cseg_Familia_Ite_Text__c, req.body.Cseg_Segm_Neg_Text__c],
+    [req.body.custbody_internal_id_saleforce, req.body.credit, req.body.customform, req.body.entity, req.body.approvalstatus,
+      req.body.trandate, req.body.custbody_cajero, req.body.memo, req.body.Internalid, req.body.subsidiary, req.body.department,
+      req.body.class, req.body.location, req.body.currency, req.body.item, req.body.quantity, req.body.price,
+      req.body.rate, req.body.taxcode, req.body.apply, req.body.amount, req.body.cseg_categ_item, req.body.cseg_sub_cat,
+      req.body.cseg_familia_ite, req.body.cseg_segm_neg, createdDate, req.body.custbody_internal_id_saleforce, false, createdDate],
     
     (err, data) => {
     if(err) {
@@ -276,3 +282,4 @@ app.listen(PORT, () => {
    * Cseg_Familia_Ite
    * Cseg_Segm_Neg
    */
+
