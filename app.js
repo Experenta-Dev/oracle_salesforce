@@ -52,7 +52,7 @@ app.post('/clients', (req, response) => {
       "Pais_de_Trabajo__c, Ciudad_de_Trabajo__c, Direcci_n_Trabajo__c, Individual__c, Nombres__c, Apellidos__c, Nombre_Empresa_2__c, Nombre_Legal__c, Parent_Company__c, " +
       "Categoria_Oracle__c, TipoIdentificacion__c, NumeroIdentificacion__c, Birthdate, Genero_Text__c, Estado_Civil__c, Nombre_Padre__c, Nombre_Madre__c, " +
       "Email, Telefono_Oracle__c, Phone, MobilePhone, OtherPhone, Fax_Oracle__c, Subsidiaria__c, Fecha_Caducidad_Tarjeta__c, Nombre_Titular_Tarjeta__c, Pais_Cliente_Oracle__c, " +
-      "Tipo_Tarjeta__c, Numero_Tarjeta__c, Currency_Oracle__c, Pais_Cliente_Oracle_2__c, Department__c, Ciudad_Tutor__c, Distrito__c, " +
+      "Tipo_Tarjeta__c, Numero_Tarjeta__c, Currency_Oracle__c, Pais_Cliente_Oracle_2__c, Department, Ciudad_Tutor__c, Distrito__c, " +
       "Direccion_de_Casa__c, Otra_Direccion__c, Internal_ID_Oracle, CreatedDate, Id, IsDeleted, SystemModstamp, LastName)" +
 
     "VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34," +
