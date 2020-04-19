@@ -205,7 +205,7 @@ app.post('/debito', (req, res) => {
       req.body.custbody_internal_id_saleforce, req.body.Internalid, req.body.subsidiary, req.body.department, req.body.class, req.body.location,
       req.body.currency, req.body.item, req.body.quantity, req.body.price, req.body.rate, req.body.taxcode,
       req.body.cseg_categ_item, req.body.cseg_sub_cat, req.body.cseg_familia_ite, req.body.cseg_segm_neg, createdDate,
-      req.body.Name, false, createdDate], 
+      req.body.custbody_internal_id_saleforce, false, createdDate], 
     
     (err, data) => {
     if(err) {
