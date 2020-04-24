@@ -266,27 +266,27 @@ app.post('/correlativos', (req, res) => {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2) WHERE Name=($1)',
       [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
       if(err){
-        res.json({operation: 'failed'});
+        res.json({type: "factura", operation: 'failed'});
       } else {
-        res.json({operation: 'sucess'});
+        res.json({type: "factura", operation: 'sucess'});
       }
     });
   } else if(req.body.tipo === 'notacredito') {
     client.query('UPDATE salesforce.Nota_de_Credito__c SET Correlativo__c=($2) WHERE Name=($1)',
     [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
       if(err){
-        res.json({operation: 'failed'});
+        res.json({type: "notacredito", operation: 'failed'});
       } else {
-        res.json({operation: 'sucess'});
+        res.json({type: "notacredito", operation: 'sucess'});
       }
     });
   } else if(req.body.tipo === 'notadebito') {
     client.query('UPDATE salesforce.Nota_de_Debito__c SET Correlativo__c=($2) WHERE Name=($1)',
     [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
       if(err){
-        res.json({operation: 'failed'});
+        res.json({type: "notadebito", operation: 'failed'});
       } else {
-        res.json({operation: 'sucess'});
+        res.json({type: "notadebito", operation: 'sucess'});
       }
     });
   }
