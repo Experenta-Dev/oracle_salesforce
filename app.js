@@ -261,6 +261,37 @@ app.post('/credito', (req, res) => {
 });
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+app.post('/correlativos', (req, res) => {
+  if(req.body.tipo === 'factura') {
+    client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2) WHERE Name=($1)',
+      [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
+      if(err){
+        res.json({operation: 'failed'});
+      } else {
+        res.json({operation: 'sucess'});
+      }
+    });
+  } else if(req.body.tipo === 'notacredito') {
+    client.query('UPDATE salesforce.Nota_de_Credito__c SET Correlativo__c=($2) WHERE Name=($1)',
+    [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
+      if(err){
+        res.json({operation: 'failed'});
+      } else {
+        res.json({operation: 'sucess'});
+      }
+    });
+  } else if(req.body.tipo === 'notadebito') {
+    client.query('UPDATE salesforce.Nota_de_Debito__c SET Correlativo__c=($2) WHERE Name=($1)',
+    [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
+      if(err){
+        res.json({operation: 'failed'});
+      } else {
+        res.json({operation: 'sucess'});
+      }
+    });
+  }
+});
+
 // inicializar
 app.listen(PORT, () => {
     console.log("Listening on PORT:", PORT);
@@ -284,3 +315,5 @@ app.listen(PORT, () => {
    * Cseg_Familia_Ite
    * Cseg_Segm_Neg
    */
+
+  /**/
