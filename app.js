@@ -262,13 +262,14 @@ app.post('/credito', (req, res) => {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.post('/correlativos', (req, res) => {
+  console.log("BODY: ", req.body);
   if(req.body.tipo === 'factura') {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2) WHERE Name=($1)',
       [req.body.internal_id_saleforce, req.body.correlativo], (err, data) => {
       if(err){
         res.json({type: "factura", operation: 'failed'});
       } else {
-        res.json({type: "factura", operation: 'sucess'});
+        res.json({type: "factura", operation: 'success'});
       }
     });
   } else if(req.body.tipo === 'notacredito') {
@@ -277,7 +278,7 @@ app.post('/correlativos', (req, res) => {
       if(err){
         res.json({type: "notacredito", operation: 'failed'});
       } else {
-        res.json({type: "notacredito", operation: 'sucess'});
+        res.json({type: "notacredito", operation: 'success'});
       }
     });
   } else if(req.body.tipo === 'notadebito') {
@@ -286,9 +287,11 @@ app.post('/correlativos', (req, res) => {
       if(err){
         res.json({type: "notadebito", operation: 'failed'});
       } else {
-        res.json({type: "notadebito", operation: 'sucess'});
+        res.json({type: "notadebito", operation: 'success'});
       }
     });
+  }else {
+    res.json({type: "Tipo Desconocido", operation: 'failed'});
   }
 });
 
