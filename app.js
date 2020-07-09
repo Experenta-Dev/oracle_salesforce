@@ -265,7 +265,7 @@ app.post('/correlativos', (req, res) => {
   console.log("BODY: ", req.body); 
   if(req.body.tipo === 'factura') {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2), CAI__c=($3), custbody_rango_autorizacion_desde__c=($4),' +
-    'custbody_rango_autorizacion_hasta__c=($5) WHERE Name=($1)',
+    'custbody_rango_autorizacion_hasta__c=($5) WHERE Id=($1)',
       [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
         req.body.custbody_rango_autorizacion_hasta], (err, data) => {
       if(err){
@@ -276,7 +276,7 @@ app.post('/correlativos', (req, res) => {
     });
   } else if(req.body.tipo === 'notacredito') {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2), CAI__c=($3), custbody_rango_autorizacion_desde__c=($4),' +
-    'custbody_rango_autorizacion_hasta__c=($5) WHERE Name=($1)',
+    'custbody_rango_autorizacion_hasta__c=($5) WHERE Id=($1)',
     [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
       req.body.custbody_rango_autorizacion_hasta], (err, data) => {
       if(err){
@@ -287,7 +287,7 @@ app.post('/correlativos', (req, res) => {
     });
   } else if(req.body.tipo === 'notadebito') {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2), CAI__c=($3), custbody_rango_autorizacion_desde__c=($4),' +
-    'custbody_rango_autorizacion_hasta__c=($5) WHERE Name=($1)',
+    'custbody_rango_autorizacion_hasta__c=($5) WHERE Id=($1)',
     [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
       req.body.custbody_rango_autorizacion_hasta], (err, data) => {
       if(err){
