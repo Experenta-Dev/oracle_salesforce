@@ -269,6 +269,7 @@ app.post('/correlativos', (req, res) => {
       [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
         req.body.custbody_rango_autorizacion_hasta], (err, data) => {
       if(err){
+        console.log(req.body.internal_id_saleforce);
         console.log(err);
         res.json({type: "factura", operation: 'failed'});
       } else {
