@@ -265,9 +265,9 @@ app.post('/correlativos', (req, res) => {
   console.log("BODY: ", req.body); 
   if(req.body.tipo === 'factura') {
     client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2), CAI__c=($3), custbody_rango_autorizacion_desde__c=($4),' +
-    'custbody_rango_autorizacion_hasta__c=($5), Internal_ID_Oracle__c=($6) WHERE CAST(salesforce.factura__c.sfid AS TEXT)=($1)',
+    'custbody_rango_autorizacion_hasta__c=($5), Internal_ID_Oracle__c=($6), Generado__c=($7) WHERE CAST(salesforce.factura__c.sfid AS TEXT)=($1)',
       [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
-        req.body.custbody_rango_autorizacion_hasta, req.body.internal_id_netsuite], (err, data) => {
+        req.body.custbody_rango_autorizacion_hasta, req.body.internal_id_netsuite, true], (err, data) => {
       if(err){
         console.log(err);
         res.json({type: "factura", operation: 'failed'});
