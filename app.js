@@ -287,10 +287,10 @@ app.post('/correlativos', (req, res) => {
       }
     });
   } else if(req.body.tipo === 'notadebito') {
-    client.query('UPDATE salesforce.factura__c SET Correlativo__c=($2), CAI__c=($3), custbody_rango_autorizacion_desde__c=($4),' +
-    'custbody_rango_autorizacion_hasta__c=($5) WHERE Id=($1)',
-    [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.custbody_rango_autorizacion_desde, 
-      req.body.custbody_rango_autorizacion_hasta], (err, data) => {
+    client.query('UPDATE salesforce.nota_de_debito__c SET Correlativo__c=($2), CAI__c=($3),' +
+    'Internal_ID_Oracle__c=($4), Generado__c=($5)' +
+    'WHERE CAST(salesforce.nota_de_debito__c.Salesforce_Id__c AS TEXT)=($1)',
+      [req.body.internal_id_saleforce, req.body.correlativo, req.body.cai, req.body.internal_id_netsuite, true], (err, data) => {
       if(err){
         res.json({type: "notadebito", operation: 'failed'});
       } else {
